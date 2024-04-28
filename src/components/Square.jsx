@@ -1,6 +1,6 @@
 export const Square = ({ value, onSquareClick }) => {
   return (
-    <button className='square' onClick={onSquareClick}>
+    <button data-testid='square' className='square' onClick={onSquareClick}>
       {value}
     </button>
   );
