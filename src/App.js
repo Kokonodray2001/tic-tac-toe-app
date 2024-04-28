@@ -39,7 +39,7 @@ export default function Game() {
           squares={currentSquare}
           onplay={handlePlay}
         ></Board>
-        <div className='game-info'>
+        <div data-testid='game-info' className='game-info'>
           <ol>{moves}</ol>
         </div>
       </div>
