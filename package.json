@@ -7,7 +7,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "cypress":"cypress open"
+    "cypress":"cypress open",
+    "coverage" : "jest --collect-coverage"
+
   },
   "dependencies": {
     "react": "^18.0.0",

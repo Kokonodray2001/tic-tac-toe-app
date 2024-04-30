@@ -63,11 +63,11 @@ describe("tic-tac-toe game component test", () => {
     expect(gameBoard).not.toBeNull();
     if (gameBoard) {
       const squares = gameBoard.querySelectorAll("button");
-      fireEvent.click(squares[1]);
+      fireEvent.click(squares[4]);
       expect(screen.getByText("Next Player : O")).toBeInTheDocument();
-      fireEvent.click(squares[3]);
+      fireEvent.click(squares[5]);
       expect(screen.getByText("Next Player : X")).toBeInTheDocument();
-      fireEvent.click(squares[6]);
+      fireEvent.click(squares[7]);
       expect(screen.getByText("Next Player : O")).toBeInTheDocument();
     }
   });
