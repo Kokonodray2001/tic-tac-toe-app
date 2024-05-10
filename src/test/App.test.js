@@ -3,13 +3,11 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Board } from "../components/Board";
 import { Square } from "../components/Square";
-describe("tic-tac-toe game component test", () => {
-  const onClick = jest.fn(() => {});
-  test("Game renders correctly", () => {
-    render(<Game />);
-  });
 
-  test("Board renders correctly", () => {
+describe("tic-tac-toe game component rendder test", () => {
+  const onClick = jest.fn(() => {});
+
+  it("Board renders correctly", () => {
     const handlePlay = jest.fn(() => {});
     const testSquare = Array(9).fill(null);
     render(<Board xIsNext={true} squares={testSquare} onplay={handlePlay} />);
@@ -19,7 +17,7 @@ describe("tic-tac-toe game component test", () => {
     expect(square.length).toBe(9);
   });
 
-  test("each square renders correctly", () => {
+  it("each square renders correctly", () => {
     render(<Square value={"X"} onSquareClick={onClick} />);
     const squareButtonElement = screen.getByTestId("square");
     expect(squareButtonElement).toBeInTheDocument();
@@ -27,22 +25,23 @@ describe("tic-tac-toe game component test", () => {
     expect(valueElement).toBeInTheDocument();
   });
 
-  test("game info renders correctly", () => {
+  it("game info renders correctly", () => {
     render(<Game />);
     const movesListItems = screen.getAllByRole("listitem");
     const movesText = movesListItems.map((item) => item.textContent).join(" ");
     expect(movesText).toBe("GO TO SATRT");
   });
 
-  test("displays initial text", () => {
+  it("displays initial text", () => {
     render(<Game />);
     const nextPlayerDisplayText = screen.getByText("Next Player : X");
     expect(nextPlayerDisplayText).toBeInTheDocument();
     const moveButtonText = screen.getByText("GO TO SATRT");
     expect(moveButtonText).toBeInTheDocument();
   });
-
-  test("player should be able to make moves ", () => {
+});
+describe("tic-tac-toe game component behaviour test", () => {
+  it("player should be able to make moves ", () => {
     render(<Game />);
     const gameBoard = screen.queryByTestId("board");
     expect(gameBoard).not.toBeNull();
@@ -57,7 +56,7 @@ describe("tic-tac-toe game component test", () => {
     }
   });
 
-  test("Next Player is displayed correctly ", () => {
+  it("Next Player is displayed correctly ", () => {
     render(<Game />);
     const gameBoard = screen.queryByTestId("board");
     expect(gameBoard).not.toBeNull();
@@ -72,7 +71,7 @@ describe("tic-tac-toe game component test", () => {
     }
   });
 
-  test("Move History us displayed correctly ", () => {
+  it("Move History us displayed correctly ", () => {
     render(<Game />);
     const gameBoard = screen.queryByTestId("board");
     expect(gameBoard).not.toBeNull();
@@ -87,7 +86,7 @@ describe("tic-tac-toe game component test", () => {
     }
   });
 
-  test("Winner is displayed correctly", () => {
+  it("Winner is displayed correctly", () => {
     render(<Game />);
     const gameBoard = screen.queryByTestId("board");
     expect(gameBoard).not.toBeNull();
@@ -102,7 +101,7 @@ describe("tic-tac-toe game component test", () => {
     }
   });
 
-  test("Time travel is working correctly", () => {
+  it("Time travel is working correctly", () => {
     render(<Game />);
     const gameBoard = screen.queryByTestId("board");
     const gameInfo = screen.queryByTestId("game-info");
